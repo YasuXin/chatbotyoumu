@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>
+            {% block title %}
+            {% endblock %}
+        </title>
+        <meta name="description" content="ヨウムと会話してる風な人工無能です。ユーザーの入力したメッセージを覚えてヨウム風におしゃべりします。あくまで　”ヨウム風”　なので意味不明なことを言うことがあります。">
+        <meta name="author" content="yasu">
+        <meta name="keyword" content="ヨウム,人工無能">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+        <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    </head>
+    <body class=p-3>
+        
+        <header class="header">
+            <div class="header-flex shadow-box">
+                <h1>
+                    {% block header %}
+                    {% endblock %}
+                </h1>
+            </div>
+        </header>
+        <main>
+            {% block content %}
+            {% endblock %}
+        </main>
+    </body>
+</html>

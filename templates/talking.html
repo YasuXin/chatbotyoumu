@@ -1,0 +1,124 @@
+{% extends "base.html" %}
+
+{% block title %}
+ヨウムとおしゃべりシミュレーター！
+{% endblock %}
+
+{% block header %}
+ヨウムとおしゃべりしてみよう！
+{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/talking.css') }}">
+<div class="talking-parent">
+    <div class="talking-container">
+        <div class="talking-image-box shadow-box">
+            <img src="{{ url_for('static', filename='images/bird_youmu.png') }}" width="250">
+        </div>
+        <div class="talking-box">
+            <div class="talking-message-box shadow-box line-box scroll-bar">
+                <div class="youmu_message">
+                    <p>>>>
+                        {% if message %}
+                            {{message}}
+                        {% else %}
+                            ここにメッセージを表示します
+                        {% endif %}
+                    </p>
+                </div> 
+            </div>
+            <div class="talking-form-box">
+                <form action="{{url_for('talk')}}" method="POST">
+                    <input type="hidden" name="user_storage" value="" id="userStorage">
+                    <input type="hidden" name="youmu_storage" value="" id="youmuStorage">
+                    <textarea name="user_input" rows="25" cols="30" placeholder="ここに入力してください" class="shadow-box line-box"></textarea>
+                    <button type="submit" class="green">はなす</button>
+                </form>
+            </div>
+            
+        </div>
+        <div class="talking-log-box shadow-box line-box scroll-bar">
+            {% for user, youmu in logs %}
+                <p class="user_log">{{user}}<</p>
+                <p class="youmu_log">>>>{{youmu}}</p>
+            {% endfor %}
+        </div>
+        
+    </div>
+    <div class="talking-description-container">
+        <div class="talking-description-box shadow-box">
+            <p class="description description-title">遊びかた：</p>
+            <p class="description">フォームに何か入力すると、鳥っぽく鳴いたり、簡単な言葉を話したり、ユーザーの入力した言葉を覚えて不思議な文章を作ったりします。</p>
+            <p class="description">最初は簡単な返答しかしませんが、たくさん入力していくと複雑な文章を作る確率が上がります。</p>
+            <p class="description">複雑な文章を作るには、目安として10～20回程度の入力が必要です。</p>
+            <p class="description">会話の履歴はローカルストレージに保存されており、下のボタンで履歴を削除します。</p>
+        </div>
+    </div>
+    <div class="talking-delete-container">
+        <div class="talking-delete-box">
+            <button type="button" class="green" onclick="clearStorage()">ログを削除</button>
+            
+        </div>
+        <div><p class="delete-text">　　　・・・いままでの会話の履歴を削除してタイトルに戻ります。</p></div>
+    </div>
+</div>
+
+<div id="modal" class="modal-none">
+    <div id="modal-window">
+        <h1 class="modal-text">!今までのログを削除します</h1>
+        <div class="modal-form">
+            <button type="button" class="modal-button" onclick="clearYes()">はい</button>
+            <button type="button" class="modal-button" onclick="clearNo()">いいえ</button>
+        </div>
+    </div>
+</div>
+<script src="{{ url_for('static', filename='js/talking.js') }}"></script>
+<script>
+    
+    function clearStorage() {
+        modal = document.querySelector("#modal")
+        modal.classList.remove("modal-none")
+        modal.classList.add("modal-black")
+    }
+
+    function clearYes() {
+        localStorage.clear()
+        window.location.href = "{{url_for('index')}}"
+    }
+    
+    function clearNo() {
+        modal = document.querySelector("#modal")
+        modal.classList.remove("modal-black")
+        modal.classList.add("modal-none")
+    }
+</script>
+<script>
+    if(localStorage.getItem('user_logs') === null) {
+        localStorage.setItem("user_logs", [])
+    } else if("{{user_storage}}") {
+        localStorage.setItem("user_logs", "{{user_storage}}")
+    } else {
+        
+    }
+    if(localStorage.getItem('youmu_logs') === null) {
+        localStorage.setItem("youmu_logs", [])
+    } else if ("{{youmu_storage}}") {
+        localStorage.setItem("youmu_logs", "{{youmu_storage}}")
+    } else {
+        
+    }
+    
+    const user_logs = localStorage.getItem('user_logs')
+    const youmu_logs = localStorage.getItem('youmu_logs')
+    
+    const user_logs_list = user_logs.split(",")
+    const youmu_logs_list = youmu_logs.split(",")
+    
+    document.querySelector("#userStorage").setAttribute("value", user_logs)
+    document.querySelector("#youmuStorage").setAttribute("value", youmu_logs)
+
+    const log_box = document.querySelector(".talking-log-box")
+
+</script>
+{% endblock %}
+

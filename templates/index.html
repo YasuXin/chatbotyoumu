@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block title %}
+ヨウムとおしゃべりシミュレーター！？
+{% endblock %}
+
+{% block header %}
+ヨウムとおしゃべりシミュレーター？
+{% endblock %}
+
+{% block content %}
+<div class="main-container">
+    <div class="main-box">
+        <div class="main-image-box">
+            <img src="{{ url_for('static', filename='images/bird_youmu2.png') }}" width="500" class="wide-img">
+            <img src="{{ url_for('static', filename='images/bird_youmu3.png') }}" width="300" class="narrow-img">
+        </div>
+        <div class="main-description-box shadow-box">
+            <p class="description description-title">説明：</p>
+            <p class="description">ヨウムと会話してる風な人工無能です。ユーザーの入力したメッセージを覚えてヨウム風におしゃべりします。</p>
+            <p class="description">あくまで　”ヨウム風”　なので意味不明なことを言うことがあります。</p>
+            <p class="description">また、スマートフォンなど小さい画面サイズには対応しておらず、なるべく大きいサイズのブラウザで使用してください。</p>
+        </div>
+    </div> 
+</div>
+<div class="main-button-container">
+<div class="main-button-box">
+    <a href="{{url_for('start_talking')}}" class="main-start-button">はじめるよぉ！</a>
+</div>
+</div>
+{% endblock %}

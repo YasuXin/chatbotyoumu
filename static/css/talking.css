@@ -1,0 +1,151 @@
+@media (prefers-color-scheme: dark) {
+    .delete-text {
+      color: white;
+    }
+    .scroll-bar {
+      border-radius: 10px;
+      overflow-y: scroll;
+      scrollbar-width: thin;
+      scrollbar-color: #999 #333;
+    }
+    .talking-message-box {
+      background-color: rgba(255,255,255,0.3);
+    }
+    
+}
+@media (prefers-color-scheme: light) {
+  .delete-text {
+    color: black;
+  }
+  .scroll-bar {
+    border-radius: 10px;
+    overflow-y: scroll;
+    scrollbar-width: thin;
+    scrollbar-color:#666 #ccc;
+  }
+  .talking-message-box {
+    background-color:rgba(210,210,210);
+  }
+}
+  .talking-parent {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 20px 0;
+    width: 100%;
+  }
+  .talking-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+  }
+  .talking-box {
+    display: flex;
+    flex-direction: column;
+    flex-basis: 50%;
+    height: 400px;
+  }
+  .talking-message-box {
+    display: flex;
+    justify-content: baseline;
+    align-items: center;
+    flex-basis: 55%;
+    margin: 0 10px 0 10px;
+    padding: 10px 20px;
+  }
+  .talking-log-box {
+    flex-basis: 30%;
+    
+    margin: 0 10px 0 10px;
+    padding: 10px;
+    height: 370px;
+  }
+  .talking-image-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-basis: 250px;
+    height: 400px;
+    background-color: rgba(0,0,0,0);
+    margin: 0 10px 0 0;
+    border-radius: 10px;
+  }
+  .talking-image-box img {
+    animation-name: YoumuAnimation;
+    animation-duration: 1s;
+
+  }
+  @keyframes YoumuAnimation {
+    0% {}
+    20% {transform: translateY(-20px);}
+    40% {transform: translateY(0);}
+    60% {transform: translateY(-10px);}
+    100% {transform: translateY(0);}
+  }
+  .talking-form-box {
+    flex-basis: 250px;
+    height: 160px;
+    margin-top: 10px;
+  }
+  form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 0 10px 0 10px;
+  }
+  form textarea {
+    width: 90%;
+    margin-bottom: 5px;
+    height: 100px;
+    border-radius: 10px;
+    background-color: rgba(255,255,255,0.1);
+    padding: 10px;
+    
+  }
+  button.green {
+    margin-top: 5px;
+    width: 100%;
+    height: 50px;
+    border-radius: 20px;
+    font-size: 24px;
+  }
+  .youmu_message p {
+    display: inline-block;
+    margin: 0;
+    font-size: 20px;
+    padding:0;
+  }
+  .youmu_log {
+    background-color: rgba(255,255,255,0.1); 
+    margin: 5px 0;
+    padding: 10px 0;
+  }
+  .user_log {
+    margin: 5px 0;
+    padding: 10px 0;
+    text-align: right;
+  }
+  
+  .talking-delete-container {
+    display: flex;
+    width: 90%;
+    margin-top: 20px;
+  }
+  .talking-description-container {
+    width: 90%;
+    margin-top: 30px;
+  }
+  .talking-description-box {
+    
+    height: 300px;
+    border-radius: 10px;
+    padding: 1px 20px;
+  }
+  
+  .talking-delete-box {
+    flex-basis: 30%;
+  }
+  
